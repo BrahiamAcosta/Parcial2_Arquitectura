@@ -1,0 +1,52 @@
+type MedicalHistory {
+    id: ID!
+    patient: Patient!
+    doctor: Doctor!
+    motivoConsutla: String!
+    diagnostico: String!
+    tratamiento: String!
+    fecha: String!
+}
+
+type Patient {
+    id: ID!
+    nombre: String!
+    apellido: String!
+    cc: String!
+    edad: Int!
+    genero: String!
+}
+
+type Doctor {
+    id: ID!
+    nombre: String!
+    apellido: String!
+    cedulaProfesional: String!
+    especialidad: String!
+}
+
+type Query {
+    medicalHistoriesByPatientCc(cedula: String!): [MedicalHistory!]!
+}
+
+type Mutation {
+    createMedicalHistory(
+        patientNombre: String!
+        patientApellido: String!
+        patientCc: String!
+        patientEdad: Int!
+        patientGenero: String!
+        doctorCedulaProfesional: String!
+        motivoConsulta: String!
+        diagnostico: String!
+        tratamiento: String!
+        fecha: String!
+    ): MedicalHistory!
+
+    createDoctor(
+        nombre: String!
+        apellido: String!
+        cedulaProfesional: String!
+        especialidad: String!
+    ): Doctor!
+}
